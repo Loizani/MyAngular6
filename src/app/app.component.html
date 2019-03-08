@@ -1,29 +1,29 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-    Utilisateurs  : {{Utilisateurs}}}
+<div class="tab-pane">
 
-
-
-   <table class="table border-dark">
+    <p>Welcome to {{ title }}!</p>
+    <p>Utilisateurs  : {{Utilisateurs}}</p>
+     <table class="table">
       <thead class="">
       <tr>
+        <th>index ngFor</th>
         <th>Identifiant</th>
         <th>Nom</th>
         <th>Prenom</th>
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let ele of Utilisateurs; let i = index">
+
+      <tr *ngFor="let ele of Utilisateurs ; let i = index">
+        <td>{{i}}</td>
         <td>{{ele.id}}</td>
         <td>{{ele.firstName}}</td>
         <td>{{ele.lastName}}</td>
       </tr>
       </tbody>
-    </table>
+  </table>
 
-  </h1>
+
 
 <router-outlet></router-outlet>
 </div>

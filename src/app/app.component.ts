@@ -1,11 +1,7 @@
-import { Component } from '@angular/core';
-
-
-import { HttpClientModule } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
-import { map, catchError, tap } from 'rxjs/operators';
+import {Component, OnInit} from '@angular/core';
+import {ServicePourUsers} from './MesServices/service-pour-users.service' ;
+import {Utilisateur} from './user/user.component' ;
+import {Observable} from 'rxjs';
 
 
 @Component({
@@ -13,33 +9,28 @@ import { map, catchError, tap } from 'rxjs/operators';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent {
-  title = 'SecANg4App';
-  private Utilisateurs: any;
-  private argRes: any ;
+export class AppComponent implements OnInit {
+  public title: string;
+  public Utilisateurs: any ;
+  private attrQuotes: object;
 
-  constructor(private httpClient: HttpClient ) {
-
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type':  'application/json',
-        'Access-Control-Allow-Origin': '*' ,
-       'Access-Control-Allow-Methods' : 'DELETE, POST, GET, OPTIONS' ,
-      'Access-Control-Allow-Headers' : 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With'
-      })
-    };
-
-    this.httpClient.get( 'http://localhost:8080/users', httpOptions ).subscribe((res) => {
-       console.log(res);
-       this.Utilisateurs = res;
-     }) ;
+  constructor(private myService: ServicePourUsers) {
 
   }
 
+  ngOnInit() {
+    this.title = 'SecANg4App';
+    this.mainGetUsers() ;
+  }
 
 
+  mainGetUsers(): void {
+    this.myService.getUsers()
+      .subscribe(users => console.log(this.Utilisateurs = users));
+  }
 
 }
+
 
 
 
