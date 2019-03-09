@@ -13,6 +13,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
@@ -34,7 +36,7 @@ import demo.model.User;
 //@ComponentScan(basePackages = "org.loiz.demo")
 @EnableTransactionManagement
 @EnableJpaRepositories(basePackages = "demo.dao")
-public class LoizBootSpringDemoApplication 
+public class LoizBootSpringDemoApplication extends SpringBootServletInitializer 
 implements CommandLineRunner
 {
 	
@@ -54,7 +56,10 @@ implements CommandLineRunner
 		
 	}
 	
-
+	  @Override
+	  protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+	      return builder.sources(LoizBootSpringDemoApplication.class);
+	  }
 
 }
 
