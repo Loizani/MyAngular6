@@ -5,16 +5,29 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import {ServicePourUsers} from './MesServices/service-pour-users.service';
+import { Utilisateur } from './myclasses/user.component';
+import { FirstUserComponent } from './first-user/first-user.component';
+import { AllUsersComponent } from './all-users/all-users.component';
+import { NewsComponent } from './news/news.component';
+import { FooterComponent } from './footer/footer.component';
+import { UsereditComponent } from './useredit/useredit.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    FirstUserComponent,
+    AllUsersComponent,
+    NewsComponent,
+    FooterComponent,
+    UsereditComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [ServicePourUsers],
   bootstrap: [AppComponent]

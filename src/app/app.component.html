@@ -1,29 +1,26 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div class="tab-pane">
+<div class="d-flex h-100">
+  <div class="bg-light border-right col-1">
+    <div class="logo">
+      <img src="http://lorempixel.com/output/people-q-g-64-64-1.jpg" class="img-responsive center-block" alt="Logo">
+    </div>
+    <br/>
+    <div class="left-navigation">
+      <p>{{ title }}!</p>
+      <button class="btn btn-primary" routerLink="/">View Home</button>&nbsp;<br/>
+      <button class="btn btn-primary" routerLink="/pathFooter">view footer</button>&nbsp;<br/>
+      <button class="btn btn-primary" routerLink="/pathUserEdit/1">View real First User</button>&nbsp;<br/>
+      <button class="btn btn-primary" routerLink="/pathFirstUser">View fake First User</button>&nbsp;<br/>
+      <button class="btn btn-primary" routerLink="/pathAllUsers">View All Users component</button>&nbsp;<br/>
+    </div>
+  </div>
+  <div class="w-100">
+    <nav class="bg-light border-bottom">
+      <h1>Bandeau du haut</h1>
+    </nav>
+    <div class="col-6">
+      <router-outlet></router-outlet>
+      <app-news></app-news>
+    </div>
+  </div>
 
-    <p>Welcome to {{ title }}!</p>
-    <p>Utilisateurs  : {{Utilisateurs}}</p>
-     <table class="table">
-      <thead class="">
-      <tr>
-        <th>index ngFor</th>
-        <th>Identifiant</th>
-        <th>Nom</th>
-        <th>Prenom</th>
-      </tr>
-      </thead>
-      <tbody>
-
-      <tr *ngFor="let ele of Utilisateurs ; let i = index">
-        <td>{{i}}</td>
-        <td>{{ele.id}}</td>
-        <td>{{ele.firstName}}</td>
-        <td>{{ele.lastName}}</td>
-      </tr>
-      </tbody>
-  </table>
-
-
-
-<router-outlet></router-outlet>
 </div>
