@@ -12,6 +12,7 @@ import { NewsComponent } from './news/news.component';
 import { FooterComponent } from './footer/footer.component';
 import { UsereditComponent } from './useredit/useredit.component';
 import { FormsModule } from '@angular/forms';
+import { AdduserComponent } from './adduser/adduser.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { FormsModule } from '@angular/forms';
     AllUsersComponent,
     NewsComponent,
     FooterComponent,
-    UsereditComponent
+    UsereditComponent,
+    AdduserComponent
   ],
   imports: [
     BrowserModule,
