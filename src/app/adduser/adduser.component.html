@@ -1,0 +1,50 @@
+<ng-template [ngIf]="attrUser" ]>
+<form name="form"  #myNGform="ngForm" (ngSubmit)="myNGform.form.valid && onSubmit()" novalidate>
+  <p>attrUser : {{attrUser}}</p>
+  <p>attrUser.firstName : {{attrUser.firstName}}</p>
+    <div>
+      <label for="id">Identifiant</label>
+      <input
+      type="text"
+      class="form-control"
+      name="id"
+      [(ngModel)]="attrUser.id"
+      #id="ngModel"
+      value=0
+      [readonly]="true"
+      required
+    />
+
+      <label for="firstName">First Name</label>
+      <input
+        type="text"
+        class="form-control"
+        name="firstName"
+        [(ngModel)]="attrUser.firstName"
+        #firstName="ngModel"
+        [ngClass]="{ 'is-invalid': myNGform.submitted && firstName.invalid }"
+        required
+      />
+      <label>last Name</label>
+      <input
+        type="text"
+        class="form-control"
+        name="lastName"
+        [(ngModel)]="attrUser.lastName"
+        #lastName="ngModel"
+        [ngClass]="{ 'is-invalid': myNGform.submitted && lastName.invalid }"
+        required
+      />
+      <div *ngIf="myNGform.submitted && lastName.invalid" class="invalid-feedback">
+        <div *ngIf="lastName.errors.required">last Name is required</div>
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary">Add user</button>
+      </div>
+
+    </div>
+</form>
+  <div>
+    <button  (click)="listBackEndUsers('(click) add user template')"  >List Users</button>
+  </div>
+</ng-template>

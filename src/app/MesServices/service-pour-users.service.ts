@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders, HttpErrorResponse} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import {catchError, map} from 'rxjs/operators';
 import {Observable, throwError} from 'rxjs';
 import {Subscription} from 'rxjs/src/internal/Subscription';
@@ -37,23 +37,34 @@ export class ServicePourUsers {
     return this.httpClient.put<Utilisateur>(this.attrUrlracine + 'users/update/' + indice, argUtilisateur) ;
   }
 
-  removeUser(argUtilisateur: Utilisateur): Observable<boolean> {
+  removeUser(argUtilisateur: Utilisateur): Observable<string> {
+    let headers: HttpHeaders = new HttpHeaders();
+    headers = headers.append('Content-Type', 'text/plain');
+    const optText: object = {responseType: 'text' } ;
     console.log('ServicePourUsers > removeUser > argUtilisateur.id ' + argUtilisateur.id) ;
-    return  this.httpClient.delete<boolean>(this.attrUrlracine + 'users/remove/' + argUtilisateur.id) ;
+    return  this.httpClient.delete<string>(this.attrUrlracine + 'users/remove/' + argUtilisateur.id,  optText  ) ;
   }
 
   gotoAllUsers(): void {
     console.log('ServicePourUsers > navigation gotoAllUsers() ') ;
     this.router
-    .navigateByUrl('/pathAllUsers', {skipLocationChange: true})
+    .navigateByUrl('/pathAllUsers', { skipLocationChange: true })
     .then(() => this.router.navigate(['pathAllUsers']));
 }
+
+  gotoErrorPage(): void {
+    console.log('ServicePourUsers > navigation gotoErrorPage() ') ;
+    this.router
+      .navigateByUrl('/angpageError', { skipLocationChange: true })
+      .then(() => this.router.navigate(['angpageError']));
+  }
+
   mainAddUser(newUser: Utilisateur): Utilisateur[] {
     this.addOneUserInfo(newUser)
       .subscribe(users => {
                             console.log('ServicePourUsers > mainAddUser(newUser) > ' + users) ;
                             this.AttrUtilisateurs =  users  ;
-      });
+      }) ;
     return  this.AttrUtilisateurs ;
   }
 

@@ -1,0 +1,31 @@
+<ng-template [ngIf]="Utilisateurs != null">
+<p>Utilisateurs  : {{Utilisateurs}}</p>
+<button class="btn-link" routerLink="/pathAddUser">Add a user</button>
+  <button  (click)="myService.listBackEndUsers('(click) all users template'); mainGetUsers()"  >List Users</button>
+<table class="table">
+  <thead class="">
+  <tr>
+    <th>index ngFor</th>
+    <th>Identifiant</th>
+    <th>Nom</th>
+    <th>Prenom</th>
+    <th>Edit</th>
+    <th>Remove</th>
+
+  </tr>
+  </thead>
+  <tbody>
+
+  <tr *ngFor="let ele of Utilisateurs ; let i = index">
+    <td>{{i}}</td>
+    <td>{{ele.id}}</td>
+    <td>{{ele.firstName}}</td>
+    <td>{{ele.lastName}}</td>
+    <td><button class="btn-link" routerLink="/pathUserEdit/{{ele.id}}">edit</button></td>
+    <td><button class="btn-primary" (click)="mainRemoveUser(ele)"  >del</button></td>
+  </tr>
+  </tbody>
+
+</table>
+
+</ng-template>

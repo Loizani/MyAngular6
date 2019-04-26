@@ -9,6 +9,7 @@ import {UsereditComponent} from './useredit/useredit.component';
 import {FooterComponent} from './footer/footer.component';
 import {NewsComponent} from './news/news.component';
 import {AdduserComponent} from './adduser/adduser.component';
+import {ErrorpageComponent} from './errorpage/errorpage.component' ;
 
 const appRoutes: Routes = [
   {path: 'pathFirstUser', component: FirstUserComponent , runGuardsAndResolvers: 'always'},
@@ -17,6 +18,7 @@ const appRoutes: Routes = [
   {path: 'pathFooter', component: FooterComponent , runGuardsAndResolvers: 'always'},
   {path: 'pathNews', component: NewsComponent , runGuardsAndResolvers: 'always' },
   {path: 'pathUserEdit/:indicepath', component: UsereditComponent , runGuardsAndResolvers: 'always'},
+  {path: 'angpageError', component: ErrorpageComponent , runGuardsAndResolvers: 'always'},
   {
     path: '',
     redirectTo: '/',
